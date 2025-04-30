@@ -27,7 +27,8 @@ const Login = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
-
+      console.log(res);
+      
       const result = await res.json();
       if (!res.ok) {
         throw new Error(result.message || "Login Failed");
