@@ -30,6 +30,28 @@ const DashBoard = () => {
 
       {
         !loading && !error && (
+        <div> 
+          {/* Emergency alert goes below */}
+          <div className='flex p-4 mb-4 text-white bg-red-400 rounded-lg'>
+          <svg
+              aria-hidden="true"
+              className="flex-shrink-0 w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                d="M18 10A8 8 0 11 2 10a8 8 0 0116 0zM9 4a1 1 0 012 0v4a1 1 0 01-2 0V4zm0 8a1 1 0 102 0 1 1 0 00-2 0z"
+                clipRule="evenodd"
+              />
+            </svg>
+
+                  <span className='sr-only'>Emergency</span>
+                  <div className='ml-3 text-sm font-medium'>
+                    EMERGENCY TEXT GOES HERE
+                  </div>
+              </div> 
         <div className='grid lg:grid-cols-3 gap-[30px] lg:gap-[50px]'>
           <Tabs tab={tab} setTab={setTab}/>
           <div className='lg:col-span-2'>
@@ -96,11 +118,12 @@ const DashBoard = () => {
               )}
               {tab==='appointments' && <Appointments appointments={data.appointments} /> }
               {tab==='settings' && <Profile doctorData={data} />  }
+
             </div>
           </div>
           </div>
+          </div>
       )}
-      <button onClick={handleLogout} className='w-full bg-[#181A1E] p-3 text-[16px] leading-7 rounded-md text-white'>Logout</button>
     </div>
    </section>
   )

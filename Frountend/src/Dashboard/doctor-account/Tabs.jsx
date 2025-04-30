@@ -19,7 +19,7 @@ const Tabs = ({tab,setTab}) => {
     <div>
         <span className='lg:hidden'>
             <BiMenu className='w-6 h-6 cursor-pointer'/>
-            </span>
+        </span>
       <div className='hidden lg:flex flex-col p-[30px] bg-white shadow-panelShadow items-center h-max rounded-md'>
         <button onClick={()=>setTab('overview')}
         className={`${
