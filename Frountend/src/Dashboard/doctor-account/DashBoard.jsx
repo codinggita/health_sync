@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useContext } from 'react';
+import { authContext } from '../../context/AuthContext';
 import Loader from '../../components/Loader/Loading.jsx';
 import Error from "../../components/Error/Error.jsx";
 import useGetProfile from '../../hooks/useFetchData.jsx'
@@ -11,8 +13,10 @@ import Appointments from './Appointment.jsx';
 
 
 const DashBoard = () => {
-
-
+  const { dispatch } = useContext(authContext);
+  const handleLogout = () => {
+    dispatch({ type: 'LOGOUT' });
+  };
   const {data,loading,error} = useGetProfile(`${BASE_URL}/doctors/profile/me`);
 
   const [tab,setTab] = useState('overview')
@@ -96,6 +100,7 @@ const DashBoard = () => {
           </div>
           </div>
       )}
+      <button onClick={handleLogout} className='w-full bg-[#181A1E] p-3 text-[16px] leading-7 rounded-md text-white'>Logout</button>
     </div>
    </section>
   )

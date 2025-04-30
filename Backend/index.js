@@ -76,6 +76,12 @@ io.on('connection', (socket) => {
     console.log(`User ${userId} joined room`);
   });
 
+  socket.on('emergency_alert', (data)=>{
+    console.log(" Emergency Alert Received:", data);
+    io.emit("new_emergency_alert", data);
+    //SMS and email aletr go here...
+  })
+
   socket.on('disconnect', () => {
     console.log('A client disconnected:', socket.id);
   });
