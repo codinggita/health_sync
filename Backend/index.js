@@ -77,7 +77,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('emergency_alert', (data)=>{
-    console.log(" Emergency Alert Received:", data);
+    console.log("Received emergency alert", data);
     io.emit("new_emergency_alert", data);
     //SMS and email aletr go here...
   })

@@ -87,9 +87,10 @@ const Header = () => {
       patientId: userData._id,
       name: userData.name,
       location: location,
-      time: new Date().toISOString
+      time: new Date().toISOString()
     }
-    socket.emit("emergency_alert", alertData)
+    console.log("Emitting emergency alert");
+    socket.emit("emergency_alert", emergencyData)
     alert("Emergency alert sent")
   }
 
