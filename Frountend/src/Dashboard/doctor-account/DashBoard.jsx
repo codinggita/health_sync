@@ -40,7 +40,6 @@ const DashBoard = () => {
     socket.on('new_emergency_alert', (data) => {
       setEmergencyMsg(data);
       getAddress(data.location.latitude,data.location.longitude)
-      console.log("emergency msg-----", data);
     });
 
     return () => {
