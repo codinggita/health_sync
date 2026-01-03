@@ -7,6 +7,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const generateToken = (user) => {
+  
   return jwt.sign(
     { id: user._id, role: user.role },
     process.env.JWT_SECRET_KEY,
@@ -80,16 +81,19 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
   const { email } = req.body;
-
+  
+  
   try {
     let user = null;
 
     const patient = await User.findOne({ email });
     const doctor = await Doctor.findOne({ email });
-
+    
+    
     if (patient) user = patient;
     if (doctor) user = doctor;
-
+    
+    
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -98,10 +102,11 @@ export const login = async (req, res) => {
     if (!isPasswordMatch) {
       return res.status(400).json({ status: false, message: "Invalid credentials" });
     }
-
+    
     const token = generateToken(user);
+    
     const { password, role, appointments, ...rest } = user._doc;
-
+    
     res.status(200).json({
       status: true,
       message: "Successfully logged in",
